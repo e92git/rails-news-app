@@ -18,16 +18,16 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
+  username: <%= ENV['DB_USERNAME'] %>
   port: 3306
-  password:
+  password: <%= ENV['DB_PASSWORD'] %>
   host: localhost
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
 
 development:
   <<: *default
-  database: news-app_development
+  database: news-app_production
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -85,5 +85,5 @@ test:
 production:
   <<: *default
   database: news-app_production
-  username: web-kss
-  password: <%= ENV['NEWS-APP_DATABASE_PASSWORD'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>

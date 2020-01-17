@@ -24,3 +24,7 @@ A rails app that allows you to view the latest articles from the NewsApi. You ca
 - [News Api](https://newsapi.org/)
 
 chown -R webkss.webkss /var/www/webkss/data/www/rails-news
+
+a2dissite rails
+a2ensite rails
+service apache2 restart
