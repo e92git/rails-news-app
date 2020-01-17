@@ -22,3 +22,5 @@ A rails app that allows you to view the latest articles from the NewsApi. You ca
 - CSS
 - JS
 - [News Api](https://newsapi.org/)
+
+chown -R webkss.webkss /var/www/webkss/data/www/rails-news
