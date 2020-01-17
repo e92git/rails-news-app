@@ -21,3 +21,5 @@
 
 # ignore .env file
 .env
+
+/.idea

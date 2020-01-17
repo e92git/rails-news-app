@@ -5,7 +5,8 @@ class NewsController < ApplicationController
     # placeholder for images that do not exist
     @image_placeholder = 'https://placehold.it/50x50'
     @articles ||= []
-    if current_user 
+    #puts @articles
+    if current_user
       @bookmark = current_user.bookmarks.new
     end
   end
@@ -25,6 +26,7 @@ class NewsController < ApplicationController
 
   def fetch_news_query query
     url = "https://newsapi.org/v2/everything?q=#{query}&apiKey=#{ENV['NEWS_API_KEY']}&language=en"
+    puts url.inspect
     response = HTTParty.get url
     response.parsed_response['articles'] unless response.code != 200
   end
