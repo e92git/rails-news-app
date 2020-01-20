@@ -20,6 +20,9 @@ class UsersController < ApplicationController
 
   def account
     @user = current_user
+    #puts @user.admin_role?
+    #puts current_user.role.has_writer?
+    #puts UserRole::ROLES.values
   end
 
   private

@@ -9,6 +9,13 @@ class User < ApplicationRecord
   
   attr_reader :password
 
+  enum role: UserRole::ROLES, _suffix: true
+
+  # добавление методов работы с ролями из UserRole
+  def role
+    @role ||= UserRole.new(read_attribute(:role))
+  end
+
   # class method
   def self.find_from_credentials(username, password)
     user = User.find_by(username: username)
