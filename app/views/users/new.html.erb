@@ -23,6 +23,9 @@
     <div class="form-group">
       <%= f.email_field :email, placeholder: 'email address', required: true, class: 'form-control'  %>
     </div>
+    <div class="form-group">
+      <%= f.select :role, options_for_select(Roleable::ROLES, :writer), {}, {class: 'form-control'} %>
+    </div>
     <%= submit_tag 'Create Account', class: 'btn btn-outline-primary align-self-center' %>
     <%= flash[:error] %>
   <% end %>

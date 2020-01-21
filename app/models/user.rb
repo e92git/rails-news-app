@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   # validations
   validates_presence_of :username
+  validates_presence_of :role
   validates :password, length: PASSWORD_LENGTH, allow_nil: true # skip validation if value is nil
 
   has_many :bookmarks

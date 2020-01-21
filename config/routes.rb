@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   get '/signup', to: 'users#new'
 
+  resources :articles
   resources :users, only: [:show, :create]
   resource :session, only: [:create, :destroy]
   resources :bookmarks, only: [:index, :create, :destroy, :update]
