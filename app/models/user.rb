@@ -1,6 +1,9 @@
 class User < ApplicationRecord
+  # добавление методов работы с ролями
+  include Roleable
+
   PASSWORD_LENGTH = (5..20)
-  
+
   # validations
   validates_presence_of :username
   validates :password, length: PASSWORD_LENGTH, allow_nil: true # skip validation if value is nil
@@ -8,13 +11,6 @@ class User < ApplicationRecord
   has_many :bookmarks
   
   attr_reader :password
-
-  enum role: UserRole::ROLES, _suffix: true
-
-  # добавление методов работы с ролями из UserRole
-  def role
-    @role ||= UserRole.new(read_attribute(:role))
-  end
 
   # class method
   def self.find_from_credentials(username, password)

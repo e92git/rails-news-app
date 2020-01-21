@@ -1,3 +1,4 @@
+# не используется сейчас
 class UserRole
   ROLES = {admin:"admin",writer:"writer",user:"user"}
   ROLES_USER = %w(admin writer user).freeze
@@ -23,3 +24,9 @@ class UserRole
     @role.to_s
   end
 end
+
+# старый вариант ролей. Вписать в классе User < ApplicationRecord
+#enum role: UserRole::ROLES, _suffix: true
+#def role
+#  @role ||= UserRole.new(read_attribute(:role))
+#end
