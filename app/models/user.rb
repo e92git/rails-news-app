@@ -9,8 +9,9 @@ class User < ApplicationRecord
   validates_presence_of :role
   validates :password, length: PASSWORD_LENGTH, allow_nil: true # skip validation if value is nil
 
-  has_many :bookmarks
-  
+  has_many :bookmarks, dependent: :destroy
+  has_many :articles, dependent: :nullify
+
   attr_reader :password
 
   # class method

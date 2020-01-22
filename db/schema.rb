@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20200121093426) do
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
     t.string "desc"
-    t.bigint "publish_status_id"
+    t.integer "publish"
     t.bigint "author_id"
     t.bigint "editor_id"
     t.datetime "edit_started_at"
@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 20200121093426) do
     t.datetime "updated_at", null: false
     t.index ["author_id"], name: "index_articles_on_author_id"
     t.index ["editor_id"], name: "index_articles_on_editor_id"
-    t.index ["publish_status_id"], name: "index_articles_on_publish_status_id"
   end
 
   create_table "bookmarks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -49,4 +48,6 @@ ActiveRecord::Schema.define(version: 20200121093426) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "articles", "users", column: "author_id"
+  add_foreign_key "articles", "users", column: "editor_id"
 end
